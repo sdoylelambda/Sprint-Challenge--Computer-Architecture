@@ -42,6 +42,11 @@ class CPU:
         self.branchtable[0b01000101] = self.handle_PUSH
         self.branchtable[0b01000110] = self.handle_POP
         self.branchtable[0b01010000] = self.handle_CALL
+        # ADD BRANCH TABLES FOR NEW FUNCTIONS
+        self.branchtable[] = self.handle_CMP
+        self.branchtable[] = self.handle_JMP
+        self.branchtable[] = self.handle_JEQ
+        self.branchtable[] = self.handle_JNE
         # Return
         self.branchtable[0b00010001] = self.handle_RET
 
