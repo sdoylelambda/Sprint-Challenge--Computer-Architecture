@@ -120,7 +120,7 @@ class CPU:
     def handle_PRN(self):
         address = self.ram_read(self.PC + 1)
         print(self.reg[address])
-        self.PC +=2
+        self.PC += 2
 
     # Multiply
     def handle_MUL(self):
@@ -168,7 +168,12 @@ class CPU:
 
     # Compare operands to see if equal or not
     def handle_CMP(self):
-        pass
+        operand_a = self.ram_read(self.PC + 1)
+        operand_b = self.ram_read(self.PC + 2)
+        if self.reg[operand_a] == self.reg[operand_b]:
+            # Binary 1 == True
+            self.FL = 1
+        self.PC += 3
 
     # Unconditional jump - jump to a different instruction, not in order
     def handle_JMP(self):
