@@ -177,15 +177,25 @@ class CPU:
 
     # Unconditional jump - jump to a different instruction, not in order
     def handle_JMP(self):
-        pass
+        address = self.ram_read(self.PC + 1)
+        self.PC = self.reg[address]
 
-    # Jump if Equal - if Equ bits is 1 in the status register
+    # Jump if Equal - if Equal bits is 1 in the status register(True)
     def handle_JEQ(self):
-        pass
+        # If Flag is True
+        if self.FL == 1:
+            address = self.ram_read(self.PC + 1)
+            self.PC = self.reg[address]
+        else:
+            self.PC += 2
 
-    # Jump Not Equal - Jump not zero
+    # Jump Not Equal - Jump not zero - If Flag is 0 (False)
     def handle_JNE(self):
-        pass
+        if self.FL == 0:
+            address = self.ram_read(self.PC + 1)
+            self.PC = self.reg[address]
+        else:
+            self.PC += 2
 
     def run(self):
         """Run the CPU."""
