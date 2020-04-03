@@ -164,6 +164,24 @@ class CPU:
 
         self.PC = return_address
 
+    # TO BE COMPLETED
+
+    # Compare operands to see if equal or not
+    def handle_CMP(self):
+        pass
+
+    # Unconditional jump - jump to a different instruction, not in order
+    def handle_JMP(self):
+        pass
+
+    # Jump if Equal - if Equ bits is 1 in the status register
+    def handle_JEQ(self):
+        pass
+
+    # Jump Not Equal - Jump not zero
+    def handle_JNE(self):
+        pass
+
     def run(self):
         """Run the CPU."""
         running = True
